@@ -3,6 +3,9 @@ window.onload = function(){
     botao.onclick = function(){ 
         let recebeNome = document.getElementById("nomeinput").value
         let recebeEndereco = document.getElementById("enderecoinput").value
+        let numeroCadastro = parseInt(Math.random()*99999)
+        let hora = new Date()
+        let horaCadastro = hora.getDate()+"/"+hora.getMonth()+"/"+hora.getFullYear()+"     "+hora.getHours()+":"+hora.getMinutes()+":"+hora.getSeconds()
         if(recebeNome == ""){
             alert("O campo NOME é obrigatório !") 
             return
@@ -14,6 +17,7 @@ window.onload = function(){
         else{
             //VALIDAÇÃO TIPO DE PESSOA
             if(document.getElementById("PF").checked){ //CASO PESSOA FISICA
+                let tipoPessoa = "Pessoa Fisica"
                 let recebeCPF = document.getElementById("cpfinput").value
                 let recebeNascimento= document.getElementById("nascimentoinput").value
                 if(recebeCPF == "" || recebeCPF.length != 11){
@@ -25,11 +29,12 @@ window.onload = function(){
                     return
                 }
                 if(recebeNome,recebeEndereco,recebeCPF,recebeNascimento != ""){
-                    let pessoa_Fisica = new PessoaFisica(recebeNome,recebeEndereco,recebeCPF,recebeNascimento)
+                    let pessoa_Fisica = new PessoaFisica(recebeNome,recebeEndereco,recebeCPF,recebeNascimento,numeroCadastro,tipoPessoa,horaCadastro)
                     console.log(pessoa_Fisica.imprimir())
                 }
             }
             else if(document.getElementById("PJ").checked){ //CASO PESSOA JURIDICA
+                let tipoPessoa = "Pessoa Juridica"
                 let recebeCNPJ = document.getElementById("cnpjinput").value
                 let recebeSocial = document.getElementById("socialinput").value
                 if(recebeCNPJ == "" || recebeCNPJ.length != 14){
@@ -41,7 +46,7 @@ window.onload = function(){
                     return
                 }
                 if(recebeNome,recebeEndereco,recebeCNPJ,recebeSocial != ""){
-                    let pessoa_Juridica = new PessoaJuridica(recebeNome,recebeEndereco,recebeCNPJ,recebeSocial)
+                    let pessoa_Juridica = new PessoaJuridica(recebeNome,recebeEndereco,recebeCNPJ,recebeSocial,numeroCadastro,tipoPessoa,horaCadastro)
                     console.log(pessoa_Juridica.imprimir())
                 }
             }
@@ -56,20 +61,29 @@ window.onload = function(){
 }
 
 class Pessoa{
-    constructor (recebeNome,recebeEndereco){
+    constructor (recebeNome,recebeEndereco,numeroCadastro,tipoCadastro,horaCadastro){
+        this.userHora= horaCadastro
+        this.userTipo = tipoCadastro
+        this.userCadastro = numeroCadastro 
         this.userName = recebeNome
         this.userEndereco = recebeEndereco
     }
     get userName(){return this.username}set userName(recebeNome){this.username = recebeNome}
     get userEndereco(){return this.userendereco}set userEndereco(recebeEndereco){this.userendereco = recebeEndereco}
+    get userCadastro(){return this.usercadastro} set userCadastro(numeroCadastro){this.usercadastro = numeroCadastro}
+    get userHora(){return this.userhora} set userHora(horaCadastro){this.userhora = horaCadastro}
     imprimir(){
-        return "Nome: " + this.username + "\n"+"Endereço: " + this.userendereco + "\n"
+        return this.userhora +"\n"+
+        "Tipo de cadastro: "+ this.userTipo+ "\n" +
+        "Numero de Cadastro: "+ this.usercadastro +"\n"+
+        "Nome: " + this.username + "\n"+
+        "Endereço: " + this.userendereco + "\n"
     }
 }
 
 class PessoaFisica extends Pessoa{
-    constructor(recebeNome,recebeEndereco,recebeCPF,recebeNascimento){
-        super(recebeNome,recebeEndereco)
+    constructor(recebeNome,recebeEndereco,recebeCPF,recebeNascimento,numeroCadastro,tipoCadastro,horaCadastro){
+        super(recebeNome,recebeEndereco,numeroCadastro,tipoCadastro,horaCadastro)
         this.userCPF = recebeCPF
         this.userNascimento = recebeNascimento
     }
@@ -81,8 +95,8 @@ class PessoaFisica extends Pessoa{
 }
 
 class PessoaJuridica extends Pessoa{
-    constructor(recebeNome,recebeEndereco,recebeCNPJ,recebeSocial){
-        super(recebeNome,recebeEndereco)
+    constructor(recebeNome,recebeEndereco,recebeCNPJ,recebeSocial,numeroCadastro,tipoCadastro,horaCadastro){
+        super(recebeNome,recebeEndereco,numeroCadastro,tipoCadastro,horaCadastro)
         this.userCNPJ = recebeCNPJ
         this.userSocial = recebeSocial
     }
