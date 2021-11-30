@@ -1,0 +1,78 @@
+input:invalid {
+    background-color: rgba(255, 0, 0, 0.322);
+    border-radius: 2px;
+}
+input:empty{
+    border:2px solid black;
+    border-radius: 2px;
+}
+#main{
+    border:  2px solid black ;
+    box-sizing: auto;
+    padding: 30px;
+    height: fit-content;
+}
+#userdata{
+    border:  2px solid black ;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+#formPJ{
+    border:  2px solid black ;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: larger;
+    padding: 20px;
+}
+#formPF{
+    margin-bottom: 10px;
+    border:  2px solid black ;
+    text-align: center;
+    font-size: larger;
+    padding: auto;
+}
+#botaoCadastro{
+    size: 30px;
+    font-size: larger;
+    display: table;
+    margin: 0 auto;
+}
+#detalhesdaconta{
+    display: table;
+    margin-left: 500px;
+    width: 300px;
+    height: 150px;
+    padding: 10px;
+    margin-bottom: 10px;    
+    border:  2px solid black ;
+    text-align: center;
+    font-size: larger;
+    line-break:auto;
+}
+#sucessoCadastro{
+    display: table;
+    margin: 0 auto;
+}
+#operacoes{
+    border:  2px solid black ;
+    width: fit-content;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+#detalhescontaloc{
+    margin-top: -228px;
+    margin-bottom: 150px;
+}
+#sucessoCadastro{
+    font-size: 40px;
+    text-align: center;
+    background-color: rgba(8, 226, 8, 0.527);
+}
+#erroCadastro{
+    font-size: 40px;
+    text-align: center;
+    background-color: rgba(255, 4, 4, 0.445);
+}

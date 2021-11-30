@@ -4,28 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro</title>
     <script src="cadastro.js"></script>
+    <link rel="stylesheet" href="cadastro.css">
 </head>
 <body>
     <main>
-        <div>
-           <label for="">Nome</label>  <br> <input type="text" id="nomeinput" value="" placeholder="Ex: Roberto Rodrigues"><br><br>
-           <label for="">Endereço</label>  <br><input type="text" id="enderecoinput" value="" placeholder="Ex : Rua Oito, nº 11"><br><br>
-
-           <label for="">Pessoa Fisica</label> <input type="radio" id="PF" name= "userEscolha" ><br><br>
-           <label for="">CPF</label> <br><input type="text" id="cpfinput" value="" placeholder="***********" ><br><br>
-           <label for="">Data de Nascimento</label><br> <input type="date" id="nascimentoinput" value=""><br><br><br>
-
-           <label for="">Pessoa Juridica</label><input type="radio" id="PJ" name= "userEscolha" ><br><br>
-           <label for="">CNPJ</label><br><input type="text" id="cnpjinput" value="" placeholder="**************" ><br><br>
-           <label for="">Razão Social</label><br><input type="text" id="socialinput" value="" placeholder="Ex: Brinquedos LTDA"><br><br>
-
+        <div id="main">
+            <div id="userdata">
+                <label for="">Nome: </label><input type="text" id="nomeinput" value="" placeholder="Ex: Roberto Rodrigues" pattern="[a-z , A-Z]+">
+                <label for="">Endereço: </label><input type="text" id="enderecoinput" value="" placeholder="Ex : Rua Oito, nº 11">
+            </div>
            
-
-           <button id="botao">Cadastrar</button>
+            <div id="formPF">
+                <label for="">Pessoa Fisica</label> <input type="radio" id="PF" name= "userEscolha" ><br><br>
+                <label for="">CPF</label> <br><input type="text" id="cpfinput" value="" placeholder="11 Digitos" pattern="[0-9]+" ><br><br>
+                <label for="">Data de Nascimento</label><br> <input type="date" id="nascimentoinput" value=""><br><br><br>
+            </div>
+            <div id="formPJ">
+                <label for="">Pessoa Juridica</label><input type="radio" id="PJ" name= "userEscolha" ><br><br>
+                <label for="">CNPJ</label><br><input type="text" id="cnpjinput" value="" placeholder="14 Digitos" pattern="[0-9]+"><br><br>
+                <label for="">Razão Social</label><br><input type="text" id="socialinput" value="" placeholder="Ex: Brinquedos LTDA"><br><br>
+            </div>
+           <br>
+            <button id="botaoCadastro">Cadastrar</button> <br><br>
+            <div id="sucessoCadastro"></div><div id="erroCadastro"></div><br><br>
+            <div id="operacoes">
+                <label for="">Deposito</label><br><input type="number" id="depositoValor"  placeholder="R$ : 0,00">
+                <button id="deposito">Depositar</button><br><br>
+                <label for="">Saque</label><br><input type="number" id="saqueInput"  placeholder="R$ : 0,00">
+                <button id="saque">Sacar</button><br><br>
+                <button id="extrato">Extrato</button>
+            </div>
+            <br>
+            <div id="detalhescontaloc">
+                <div id="detalhesdaconta" title="Detalhes da Conta">Detalhes da Conta:</div>
+            </div>
         </div>
+        
+
     </main>
     
 </body>
 </html>
+
+
