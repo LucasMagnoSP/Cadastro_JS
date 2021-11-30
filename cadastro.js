@@ -74,6 +74,7 @@ window.onload = function(){
         }
         setTimeout(() => {
             document.getElementById("sucessoCadastro").innerHTML = ""
+            document.getElementById("erroCadastro").innerHTML = ""
         }, 5000);
     }
     botaodeposito.onclick = function(){ //Ação Botão Deposito
@@ -90,6 +91,7 @@ window.onload = function(){
         }
         setTimeout(() => {
             document.getElementById("sucessoCadastro").innerHTML = ""
+            document.getElementById("erroCadastro").innerHTML = ""
         }, 5000);
     }
     botaoextrato.onclick = function(){ //Ação Botão Extrato 
@@ -101,10 +103,11 @@ window.onload = function(){
             document.getElementById("sucessoCadastro").innerHTML = pessoa_Juridica.extrato()
         }
         else{
-            alert("ERRO EXTRATO")
+            document.getElementById("erroCadastro").innerHTML ="Antes de tirar o extrato, cadastre sua conta !"
         }
         setTimeout(() => {
             document.getElementById("sucessoCadastro").innerHTML = ""
+            document.getElementById("erroCadastro").innerHTML = ""
         }, 5000);
     }
 }
