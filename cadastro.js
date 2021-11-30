@@ -58,7 +58,7 @@ window.onload = function(){
         }
         setTimeout(() => {
             document.getElementById("sucessoCadastro").innerHTML = ""
-        }, 5000);
+        },5000);
     }
     botaosaque.onclick = function(){ //Ação Botão Saque
         if(document.getElementById("PF").checked){
@@ -75,7 +75,7 @@ window.onload = function(){
         setTimeout(() => {
             document.getElementById("sucessoCadastro").innerHTML = ""
             document.getElementById("erroCadastro").innerHTML = ""
-        }, 5000);
+        },5000);
     }
     botaodeposito.onclick = function(){ //Ação Botão Deposito
         if(document.getElementById("PF").checked){
@@ -92,7 +92,7 @@ window.onload = function(){
         setTimeout(() => {
             document.getElementById("sucessoCadastro").innerHTML = ""
             document.getElementById("erroCadastro").innerHTML = ""
-        }, 5000);
+        },5000);
     }
     botaoextrato.onclick = function(){ //Ação Botão Extrato 
         if(document.getElementById("PF").checked){
@@ -108,7 +108,7 @@ window.onload = function(){
         setTimeout(() => {
             document.getElementById("sucessoCadastro").innerHTML = ""
             document.getElementById("erroCadastro").innerHTML = ""
-        }, 5000);
+        },5000);
     }
 }
 
@@ -142,7 +142,7 @@ class Pessoa{
             document.getElementById("erroCadastro").innerHTML ="Valor em conta insuficiente para saque."
         }
         else{
-            alert("Erro metodo")
+            document.getElementById("erroCadastro").innerHTML ="Digite o valor que deseja sacar."
         }
     }
     depositar(){
