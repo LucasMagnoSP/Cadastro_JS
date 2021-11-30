@@ -1,5 +1,7 @@
 # Cadastro_JS
  Um pequeno projeto de cadastro de Pessoa Fisica ou Juridica, feito em HTML e JavaScript
+ 
+ Preview -> https://htmlpreview.github.io/?https://github.com/LucasMagnoSP/Cadastro_JS/blob/main/Cadastro.html
 
 v1.02.301121
 
