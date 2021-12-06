@@ -5,7 +5,9 @@ window.onload = function(){
     let botaoextrato = document.getElementById("extrato")
     var pessoa_Fisica
     var pessoa_Juridica
+
     botaocadastro.onclick = function(){ //Ação Botao Cadastro
+        setTimeout(() => {document.getElementById("erroCadastro").innerHTML = ""},5000);
         let usersaldoInicial = 0
         let recebeNome = document.getElementById("nomeinput").value
         let recebeEndereco = document.getElementById("enderecoinput").value
@@ -13,7 +15,7 @@ window.onload = function(){
         let hora = new Date()
         let horaCadastro = hora.getDate()+"/"+hora.getMonth()+"/"+hora.getFullYear()+"   "+hora.getHours()+":"+hora.getMinutes()+":"+hora.getSeconds()
         if(recebeNome == ""){
-            document.getElementById("erroCadastro").innerHTML ="O campo NOME é obrigatório !"
+            document.getElementById("erroCadastro").innerHTML ="O campo NOME é obrigatório !" 
         }
         else if(recebeEndereco == ""){
             document.getElementById("erroCadastro").innerHTML ="O campo ENDEREÇO é obrigatório !"
@@ -26,14 +28,17 @@ window.onload = function(){
                 let recebeNascimento= document.getElementById("nascimentoinput").value
                 if(recebeCPF == "" || recebeCPF.length != 11){
                     document.getElementById("erroCadastro").innerHTML ="O campo CPF é obrigatório e deve conter 11 digitos !"
+                    return
                 }
                 if(recebeNascimento == "" || recebeNascimento == Date.now()){
                     document.getElementById("erroCadastro").innerHTML ="O campo DATA DE NASCIMENTO é obrigatório !"
+                    return
                 }
                 if(recebeNome,recebeEndereco,recebeCPF,recebeNascimento != ""){
                     pessoa_Fisica = new PessoaFisica(recebeNome,recebeEndereco,recebeCPF,recebeNascimento,numeroCadastro,tipoPessoa,horaCadastro,usersaldoInicial)
                     document.getElementById("sucessoCadastro").innerHTML = "Parabens "+ recebeNome + " seu cadastro foi realizado com sucesso !"
                     document.getElementById("detalhesdaconta").innerHTML = pessoa_Fisica.imprimir()
+                    setTimeout(() => {document.getElementById("sucessoCadastro").innerHTML = ""},5000);
                 }  
             }
             else if(document.getElementById("PJ").checked){ //CASO PESSOA JURIDICA
@@ -42,23 +47,24 @@ window.onload = function(){
                 let recebeSocial = document.getElementById("socialinput").value
                 if(recebeCNPJ == "" || recebeCNPJ.length != 14){
                     document.getElementById("erroCadastro").innerHTML ="O campo CNPJ é obrigatório e deve conter 14 digitos !"
+                    return
                 }
                 if(recebeSocial == ""){
                     document.getElementById("erroCadastro").innerHTML ="O campo RAZÃO SOCIAL é obrigatório !"
+                    return
                 }
                 if(recebeNome,recebeEndereco,recebeCNPJ,recebeSocial != ""){
                     pessoa_Juridica = new PessoaJuridica(recebeNome,recebeEndereco,recebeCNPJ,recebeSocial,numeroCadastro,tipoPessoa,horaCadastro,usersaldoInicial)
                     document.getElementById("sucessoCadastro").innerHTML = "Parabens "+ recebeNome + " seu cadastro foi realizado com sucesso !"
                     document.getElementById("detalhesdaconta").innerHTML = pessoa_Juridica
+                    setTimeout(() => {document.getElementById("sucessoCadastro").innerHTML = ""},5000);
                 }
             }
             else if(document.getElementById("PJ").checked == false && document.getElementById("PF").checked ==false){   //CASO NENHUM TIPO DE PESSOA SELECIONADO
                 document.getElementById("erroCadastro").innerHTML ="Por gentileza, escolha entre Pessoa Fisica ou Pessoa Juridica"
-            }
+            }   
         }
-        setTimeout(() => {
-            document.getElementById("sucessoCadastro").innerHTML = ""
-        },5000);
+        return
     }
     botaosaque.onclick = function(){ //Ação Botão Saque
         if(document.getElementById("PF").checked){
@@ -71,11 +77,9 @@ window.onload = function(){
         }
         else{
             document.getElementById("erroCadastro").innerHTML ="Antes de sacar, cadastre sua conta !"
+            setTimeout(() => {document.getElementById("erroCadastro").innerHTML = ""},5000);
         }
-        setTimeout(() => {
-            document.getElementById("sucessoCadastro").innerHTML = ""
-            document.getElementById("erroCadastro").innerHTML = ""
-        },5000);
+        setTimeout(() => {document.getElementById("sucessoCadastro").innerHTML = ""},5000);
     }
     botaodeposito.onclick = function(){ //Ação Botão Deposito
         if(document.getElementById("PF").checked){
@@ -88,13 +92,12 @@ window.onload = function(){
         }
         else{
             document.getElementById("erroCadastro").innerHTML ="Antes de depositar, cadastre sua conta !"
+            setTimeout(() => {document.getElementById("erroCadastro").innerHTML = ""},5000);
         }
-        setTimeout(() => {
-            document.getElementById("sucessoCadastro").innerHTML = ""
-            document.getElementById("erroCadastro").innerHTML = ""
-        },5000);
+        setTimeout(() => {document.getElementById("erroCadastro").innerHTML = ""},5000);
     }
     botaoextrato.onclick = function(){ //Ação Botão Extrato 
+        
         if(document.getElementById("PF").checked){
             document.getElementById("sucessoCadastro").innerHTML = pessoa_Fisica.extrato()
         }
@@ -104,11 +107,9 @@ window.onload = function(){
         }
         else{
             document.getElementById("erroCadastro").innerHTML ="Antes de tirar o extrato, cadastre sua conta !"
-        }
-        setTimeout(() => {
-            document.getElementById("sucessoCadastro").innerHTML = ""
-            document.getElementById("erroCadastro").innerHTML = ""
-        },5000);
+            setTimeout(() => {document.getElementById("erroCadastro").innerHTML = ""},5000);
+        }    
+        setTimeout(() => {document.getElementById("sucessoCadastro").innerHTML = ""},5000);
     }
 }
 
@@ -169,7 +170,7 @@ class PessoaFisica extends Pessoa{
     get userCPF(){return this.usercpf} set userCPF(recebeCPF){this.usercpf = recebeCPF}
     get userNascimento(){return this.usernascimento}set userNascimento(recebeNascimento){this.usernascimento = recebeNascimento}
     imprimir(){
-        return super.imprimir() + "CPF: "+this.usercpf + "<br/>" +"Data de Nascimento: "+ this.usernascimento 
+        return super.imprimir() + "CPF: "+this.usercpf + "<br/>" +"Data de Nascimento: "+ this.usernascimento
     }
 }
 
